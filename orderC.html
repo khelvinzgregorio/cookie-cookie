@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Co. - Order Summary</title>
+    <link rel="stylesheet" href="ecommerce.css">
+</head>
+<body>
+    <header>
+        <h1>Cookie Co.</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="productsC.html">Products</a></li>
+                <li><a href="contactusC.html">Contact Us</a></li>
+                <li><a href="aboutC.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Order Summary</h2>
+        <div class="order-details">
+            <h3>Your Cart</h3>
+            <ul id="order-items"></ul>
+            <div>Total: P<span id="order-total">0.00</span></div>
+        </div>
+        <h2>Delivery Information</h2>
+        <form id="order-form">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="phone">Phone Number:</label><br>
+            <input type="text" id="phone" name="phone" required><br><br>
+            <label for="address">Address:</label><br>
+            <textarea id="address" name="address" required></textarea><br><br>
+            <button type="submit">Submit Order</button>
+        </form>
+    </div>
+    <div class="container" id="receipt" style="display:none;">
+        <h2>Receipt</h2>
+        <p>Thank you for your order!</p>
+        <div id="receipt-details"></div>
+    </div>
+    <script src="ecommerce.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let total = localStorage.getItem('total') || 0;
+
+            let orderItems = document.getElementById('order-items');
+            cart.forEach(item => {
+                let li = document.createElement('li');
+                li.textContent = item.name + ' - P' + item.price.toFixed(2);
+                orderItems.appendChild(li);
+            });
+            document.getElementById('order-total').textContent = parseFloat(total).toFixed(2);
+
+            document.getElementById('order-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                let name = document.getElementById('name').value;
+                let phone = document.getElementById('phone').value;
+                let address = document.getElementById('address').value;
+
+                let receiptDetails = document.getElementById('receipt-details');
+                receiptDetails.innerHTML = `
+                    <p>Name: ${name}</p>
+                    <p>Phone: ${phone}</p>
+                    <p>Address: ${address}</p>
+                    <h3>Order Summary</h3>
+                    <ul>${orderItems.innerHTML}</ul>
+                    <div>Total: P${total}</div>
+                `;
+
+                document.getElementById('order-form').style.display = 'none';
+                document.getElementById('receipt').style.display = 'block';
+
+                localStorage.removeItem('cart');
+                localStorage.removeItem('total');
+            });
+        });
+    </script>
+</body>
+</html>
+

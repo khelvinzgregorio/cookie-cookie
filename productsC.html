@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Co. - Products</title>
+    <link rel="stylesheet" href="Cproducts.css">
+</head>
+<body>
+    <header>
+        <h1>Cookie Co.</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="productsC.html">Products</a></li>
+                <li><a href="contactusC.html">Contact Us</a></li>
+                <li><a href="aboutC.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Our Products</h2>
+        <div class="products">
+            <div class="product">
+                <h3>Chocolate Chip Cookie</h3>
+                <p>Price: P<span class="price">50.00</span></p>
+                <button onclick="addToCart(1)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h3>Oatmeal Raisin Cookie</h3>
+                <p>Price: P<span class="price">60.00</span></p>
+                <button onclick="addToCart(2)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h3>Peanut Butter Cookie</h3>
+                <p>Price: P<span class="price">55.00</span></p>
+                <button onclick="addToCart(3)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h3>Sugar Cookie</h3>
+                <p>Price: P<span class="price">45.00</span></p>
+                <button onclick="addToCart(4)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h3>Double Chocolate Cookie</h3>
+                <p>Price: P<span class="price">70.00</span></p>
+                <button onclick="addToCart(5)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h3>Red Velvet Cookie</h3>
+                <p>Price: P<span class="price">100.00</span></p>
+                <button onclick="addToCart(6)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h3>S'mores Cookie</h3>
+                <p>Price: P<span class="price">80.00</span></p>
+                <button onclick="addToCart(7)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h3>Lemon Cookie</h3>
+                <p>Price: P<span class="price">70.00</span></p>
+                <button onclick="addToCart(8)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h3>M&M Cookie</h3>
+                <p>Price: P<span class="price">100.00</span></p>
+                <button onclick="addToCart(9)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h3>Salted Caramel Cookie</h3>
+                <p>Price: P<span class="price">60.00</span></p>
+                <button onclick="addToCart(10)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    <div class="floating-cart">
+        <h3>Cart</h3>
+        <ul id="cart-items"></ul>
+        <div>Total: P<span id="cart-total">0.00</span></div>
+        <button onclick="goToOrderSummary()">Order</button>
+    </div>
+    <script src="ecommerce.js"></script>
+</body>
+</html>
